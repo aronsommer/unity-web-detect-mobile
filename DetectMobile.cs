@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 [DllImport("__Internal")]
 private static extern bool IsMobile();
 
