@@ -7,19 +7,20 @@ public class DetectMobile : MonoBehaviour
     [DllImport("__Internal")]
     private static extern bool IsMobile();
 
-    public bool isMobile()
+    private bool _isMobile()
     {
-#if !UNITY_EDITOR && UNITY_WEBGL
-    return IsMobile();
-#endif
+#if UNITY_WEBGL && !UNITY_EDITOR
+        return IsMobile();
+#else
         return false;
+#endif
     }
 
     public TextMeshProUGUI Txt;
 
     void Start()
     {
-        if (isMobile())
+        if (_isMobile())
         {
             Txt.text = "Its a mobile device";
         }
